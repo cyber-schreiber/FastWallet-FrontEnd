@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/FastWallet-FrontEnd/static/css/main.a617e044.chunk.css",
+    "main.js": "/FastWallet-FrontEnd/static/js/main.9638d43a.chunk.js",
+    "main.js.map": "/FastWallet-FrontEnd/static/js/main.9638d43a.chunk.js.map",
+    "runtime-main.js": "/FastWallet-FrontEnd/static/js/runtime-main.772f106f.js",
+    "runtime-main.js.map": "/FastWallet-FrontEnd/static/js/runtime-main.772f106f.js.map",
+    "static/js/2.946cb3ba.chunk.js": "/FastWallet-FrontEnd/static/js/2.946cb3ba.chunk.js",
+    "static/js/2.946cb3ba.chunk.js.map": "/FastWallet-FrontEnd/static/js/2.946cb3ba.chunk.js.map",
+    "static/js/3.1cb4817a.chunk.js": "/FastWallet-FrontEnd/static/js/3.1cb4817a.chunk.js",
+    "static/js/3.1cb4817a.chunk.js.map": "/FastWallet-FrontEnd/static/js/3.1cb4817a.chunk.js.map",
+    "index.html": "/FastWallet-FrontEnd/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/FastWallet-FrontEnd/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.946cb3ba.chunk.js.LICENSE.txt": "/FastWallet-FrontEnd/static/js/2.946cb3ba.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.772f106f.js",
+    "static/js/2.946cb3ba.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.9638d43a.chunk.js"
+  ]
+}
