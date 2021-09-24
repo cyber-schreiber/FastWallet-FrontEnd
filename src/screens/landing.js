@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import AddFunds from './addfunds';
-import Buy from './buy.js';
-import Sell from './sell.js';
+import Trade from './trade.js';
+import MyAccount from './myaccount';
+import lightGoldCoin from '../LightGoldCoin.png';
+import Button from '../components/Button';
 
 class Landing extends Component{
 
@@ -9,42 +11,66 @@ class Landing extends Component{
         super(props);
 
         this.state = {
-            mode: "landing",
+            mode: "myAccount",
         }
     }
 
-    addFunds(){
-        this.setState({
+    addFunds(_this){
+        _this.setState({
             mode: "addFunds",
         })
     }
 
-    buy(){
-        this.setState({
-            mode: "buy",
+    trade(_this){
+        _this.setState({
+            mode: "trade",
         })
     }
 
-    sell(){
-        this.setState({
-            mode: "sell",
+    myAccount(_this){
+        _this.setState({
+            mode: "myAccount",
         })
     }
+
 
     render(){
         return (
-            <div>
-                <input style={{width:100}} type="submit" value="Add funds!" onClick={() => this.addFunds()}/>
-                <input style={{width:100}} type="submit" value="Buy!" onClick={() => this.buy()}/>
-                <input style={{width:100}} type="submit" value="Sell!" onClick={() => this.sell()}/>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <img src={lightGoldCoin} style={{height: '50vh', position: 'fixed', bottom: '15vh', left: '30vh'}} />
+                <div style={{height: '40vh', position: 'fixed', bottom: '18vh', left: '42vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <Button label="MY ACCOUNT" style={{width: '25vh'}} onClick={() => this.myAccount(this)}/>
+                    <div style={{height: '2vh'}}></div>
+                    <Button label="ADD FUNDS" style={{width: '25vh'}} onClick={() => this.addFunds(this)}/>
+                    <div style={{height: '2vh'}}></div>
 
-                {this.state.mode == "addFunds" && <AddFunds/>}
-                {this.state.mode == "buy" && <Buy/>}
-                {this.state.mode == "sell" && <Sell/>}
+                    <Button label="TRADE" onClick={() => this.trade(this)}/>
+
+                </div>
+                <img src={lightGoldCoin} style={{height: '50vh', position: 'fixed', bottom: '15vh', right: '30vh'}} />
+                
+                <div style={{height: '40vh', position: 'fixed', bottom: '20vh', right: '40vh', width: '30vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+
+                    {this.state.mode == "addFunds" && <AddFunds/>}
+                    {this.state.mode == "trade" && <Trade/>}
+                    {this.state.mode == "myAccount" && <MyAccount/>}
+                </div>
             </div>
 
         );
     }
+
+        // render(){
+    //     return (
+    //     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    //         <img src={lightGoldCoin} style={{height: '35vh', position: 'fixed', bottom: '20vh'}} />
+    //         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+    //             <div className="Button" style={{position: 'absolute', bottom: '38%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} onClick={this.props.twofa}><b>SIGN UP</b></div>
+    //             <div className="Button" style={{position: 'absolute', bottom: '30%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} onClick={this.props.login}><b>LOG IN</b></div>
+    //         </div>
+    //     </div>
+    //     );
+    // }
 }
 
 export default Landing;

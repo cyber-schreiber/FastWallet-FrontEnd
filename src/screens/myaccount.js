@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class Buy extends Component{
+export default class MyAccount extends Component{
 
     constructor(props){
         super(props);
@@ -10,11 +10,8 @@ class Buy extends Component{
     render(){
         return (
             <p>
-                Buy!
+                Account details show up here
             </p>
-
         );
     }
 }
-
-export default Buy;

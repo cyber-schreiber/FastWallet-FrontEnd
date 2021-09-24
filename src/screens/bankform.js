@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import lightGoldCoin from '../LightGoldCoin.png';
 import Button from '../components/Button';
 
-class SignUpForm extends Component{
+export default class BankForm extends Component{
 
     constructor(props){
         super(props);
@@ -10,42 +9,36 @@ class SignUpForm extends Component{
 
     render(){
         return (
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: 500}}>
-                <img src={lightGoldCoin} style={{height: '55vh', position: 'fixed', bottom: '15vh'}} />
-                <div style={{height: '40vh', position: 'fixed', bottom: '13vh', }}>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <div style={{alignItems: 'flex-start', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <label>
-                    Country of residence 
+                    Institution name
                     <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
                 </label>
                 <label style={{marginTop: '0.5vh'}}>
-                    Street address 
+                    Branch ID
                     <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
                 </label>
                 <label style={{marginTop: '0.5vh'}}>
-                    City 
+                    Account number
                     <input type="text" name="name"  style={{marginLeft: '0.5vh'}}/>
                 </label>
-                <label style={{marginTop: '0.5vh'}}>
-                    State or province 
+                {/* <label style={{marginTop: '0.5vh'}}>
+                    Country
                     <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
                 </label>
                 <label style={{marginTop: '0.5vh'}}>
-                    Postal or zip code 
+                    State or Province
+                    <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
+                </label> */}
+                <label style={{marginTop: '0.5vh'}}>
+                    Transfer Amount
                     <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
                 </label>
-                <label style={{marginTop: '0.5vh'}}>
-                    Birthdate 
-                    <input type="text" name="name" style={{marginLeft: '0.5vh'}}/>
-                </label>
-                <label style={{marginTop: '0.5vh'}}>
-                    Country of nationality 
-                    <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
-                </label>
+                
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '1vh'}}>
-                <Button label="SUBMIT" onClick={this.props.photoID}/>
-                </div>
+                <Button label="SUBMIT" onClick={this.props.submit}/>
                 </div>
 
             </div>
@@ -53,5 +46,3 @@ class SignUpForm extends Component{
         );
     }
 }
-
-export default SignUpForm;
