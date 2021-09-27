@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Button from '../components/Button';
 import BankForm from './bankform';
 import BackButton from '../components/BackButton';
+import AddCash from './addcash';
 
 class AddFunds extends Component{
 
@@ -34,13 +35,13 @@ class AddFunds extends Component{
                 <div style={{height: '2vh'}}></div>
                 <Button label="ACH TRANSFER" style={{width: '30vh'}} onClick={() => this.setMode(this, "ach")}/>
                 <div style={{height: '2vh'}}></div>
-                <Button label="TRANSFER CRYPTO" style={{width: '35vh'}} onClick={() => this.setMode(this, "crypto")}/>
+                <Button label="TRANSFER COINS" style={{width: '35vh'}} onClick={() => this.setMode(this, "crypto")}/>
                 <div style={{height: '2vh'}}></div>
                 <Button label="WIRE MONEY" style={{width: '25vh'}} onClick={() => this.setMode(this, "wire")}/>
                 </>
                 }
                 {
-                    this.state.mode == "addCash" && <div>Add cash now!</div>
+                    this.state.mode == "addCash" && <div><AddCash addBalance={this.props.addBalance} goToTradeScreen={this.props.goToTradeScreen} parent={this.props.parent}/></div>
                 }
                 {
                     this.state.mode == "ach" && 
