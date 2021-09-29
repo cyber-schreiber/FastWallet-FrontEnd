@@ -12,6 +12,7 @@ import SignUpForm from './screens/signupform.js';
 import Login from './screens/login.js';
 import Landing from './screens/landing.js';
 import React, {Component} from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
@@ -50,15 +51,11 @@ class App extends Component {
 
           
           />
-        {this.state.screen === "welcome" && <Welcome twofa={() => this.setScreen(this, "twofa")} login={() => this.setScreen(this, "login")}/>}
 
-        {this.state.screen === "twofa" && <TwoFA goBack={() => this.setScreen(this, "welcome")} signup={() => this.setScreen(this, "signup")}/>}
-        {this.state.screen === "signup" && <SignUpForm photoID={() => this.setScreen(this, "photoid")}/>}
-        {this.state.screen === "photoid" && <PhotoID landing={() => this.setScreen(this, "landing")}/>}
-        {this.state.screen === "landing" && <Landing/>}
-
-        {this.state.screen === "login" && <Login landing={() => this.setScreen(this, "landing")}/>} 
-
+          <Switch>
+            <Route exact path="/" component={Welcome}/>
+            <Route path="/account" component={Landing}/>
+          </Switch>
       </div>
       );
   }

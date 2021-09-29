@@ -6,6 +6,7 @@ class SignUpForm extends Component{
 
     constructor(props){
         super(props);
+
     }
 
     render(){
@@ -43,8 +44,9 @@ class SignUpForm extends Component{
                     <input type="text" name="name" style={{marginLeft: '0.5vh'}} />
                 </label>
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '1vh'}}>
-                <Button label="SUBMIT" onClick={this.props.photoID}/>
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '1vh'}}>
+                    <Button label="PHONE" onClick={this.props.phoneOrEmail === "phone" ? this.props.nextScreen : () => alert("you chose email before!")}/>
+                    <Button label="EMAIL" onClick={this.props.phoneOrEmail === "email" ? this.props.nextScreen : () => alert("you chose phone before!")}/>
                 </div>
                 </div>
 

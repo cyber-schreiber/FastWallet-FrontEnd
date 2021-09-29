@@ -3,7 +3,7 @@ import lightGoldCoin from '../LightGoldCoin.png';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 
-class Login extends Component{
+export default class Login extends Component{
 
     constructor(props){
         super(props);
@@ -22,7 +22,7 @@ class Login extends Component{
                         Password:
                         <input type="password" name="name" />
                     </label>
-                    <Button label="LOG IN" onClick={this.props.landing}/>
+                    <Button label="LOG IN" onClick={this.props.nextScreen}/>
                 </div>
 
             </div>
@@ -31,5 +31,3 @@ class Login extends Component{
     }
 
 }
-
-export default Login;

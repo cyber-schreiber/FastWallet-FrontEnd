@@ -3,6 +3,7 @@ import Button from '../components/Button';
 import BankForm from './bankform';
 import BackButton from '../components/BackButton';
 import AddCash from './addcash';
+import TransferCoins from './transfercoins';
 
 class AddFunds extends Component{
 
@@ -48,7 +49,7 @@ class AddFunds extends Component{
                     <BankForm submit={() => this.setMode(this, "achSubmitted")}/>
                 }
                 {
-                    this.state.mode == "crypto" && <div>complicated process here...</div>
+                    this.state.mode == "crypto" && <TransferCoins goToAccount={this.props.goToAccount} parent={this.props.parent}/>
                 }
                 {
                     this.state.mode == "wire" && 

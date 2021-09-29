@@ -14,7 +14,7 @@ class PhotoID extends Component{
                 <img src={lightGoldCoin} style={{height: '40vh', position: 'fixed', bottom: '20vh'}} />
                 <div style={{height: '40vh', position: 'fixed', bottom: '20vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 Take a photo of your ID!
-                <Button style={{marginTop: '1vh'}} label="SUBMIT" onClick={this.props.landing}/>
+                <Button style={{marginTop: '1vh'}} label="SUBMIT" onClick={this.props.nextScreen}/>
                 </div>
             </div>
 

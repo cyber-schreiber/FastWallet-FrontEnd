@@ -9,7 +9,7 @@ export default class BackButton extends Component{
 
     render(){
         return (
-            <SmallButton style={{...this.props.style}} label={<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '1vh'}}><IoChevronBack  size={25 } /><div style={{marginBottom: '1vh', marginRight: '0.3vh', marginLeft: '0.3vh'}}> back</div></div>} onClick={this.props.onClick}/>
+            <SmallButton style={{...this.props.style}} label={<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '1vh'}}><IoChevronBack  size={25 } /><div style={{marginBottom: '1vh', marginRight: '0.3vh', marginLeft: '0.3vh'}}>{!!this.props.label ? this.props.label : "back"}</div></div>} onClick={this.props.onClick}/>
         );
     }
 }
