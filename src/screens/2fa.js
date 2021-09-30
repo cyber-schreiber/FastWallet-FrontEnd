@@ -17,6 +17,7 @@ class TwoFA extends Component{
         this.state = {
             mode: modes.phoneOrEmail,
             codeSent: false,
+            enteredCode: "",
         }
     }
 
@@ -76,10 +77,10 @@ class TwoFA extends Component{
 
                         {this.state.codeSent && <div style={{marginTop: '1vh', display: 'flex', flexDirection: 'column', alignItems: 'center'}}><label>
                             Enter code:
-                            <input type="text" name="code" />
+                            <input type="text" name="code" onChange={val => this.setState({enteredCode: val.target.value})}/>
                         </label>
                         <div style={{height: '1vh'}}/>
-                        <SmallButton label="submit" onClick={this.props.nextScreen}/>
+                        <SmallButton label="submit" onClick={this.state.enteredCode == "123" ? this.props.nextScreen : () => alert("invalid code")}/>
                         </div>}
 
                     </div>

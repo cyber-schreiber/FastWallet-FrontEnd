@@ -80,6 +80,9 @@ export default class Landing extends Component{
 
 
     render(){
+
+        let accStr = !!this.props.accountID ? " " + String(this.props.accountID) : "";
+        accStr = "MY ACCOUNT" + accStr;
         return (
 
             <div style={{height: '45vh', width: '88vh', position: 'fixed', bottom: '20vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -89,7 +92,7 @@ export default class Landing extends Component{
 
                     <div style={{position: 'absolute', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
                         <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30vh'}}>
-                            <Button label="MY ACCOUNT" style={{width: '25vh', backgroundColor: this.state.mode == "myAccount" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.myAccount(this)}/>
+                            <Button label={accStr} style={{width: '25vh', backgroundColor: this.state.mode == "myAccount" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.myAccount(this)}/>
                             <div style={{height: '2vh'}}></div>
                             <Button label="ADD FUNDS" style={{width: '25vh', backgroundColor: this.state.mode == "addFunds" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.addFunds(this)}/>
                             <div style={{height: '2vh'}}></div>

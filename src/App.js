@@ -13,6 +13,8 @@ import Login from './screens/login.js';
 import Landing from './screens/landing.js';
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import EnterPassword from './screens/enterpassword';
+import QRCodeFlow from './screens/qrcodeflow';
 
 class App extends Component {
 
@@ -54,7 +56,12 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Welcome}/>
-            <Route path="/account" component={Landing}/>
+            <Route exact path="/account" component={Landing}/>
+            {
+              [...Array(500).keys()].map((num) => 
+                <Route path={"/account/" + String(num)} render={() => <QRCodeFlow accountID={num}/>}/>
+              )
+            }
           </Switch>
       </div>
       );

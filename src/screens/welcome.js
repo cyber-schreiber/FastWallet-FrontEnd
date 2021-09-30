@@ -44,8 +44,7 @@ class Welcome extends Component{
                     <img src={lightGoldCoin} style={{height: '35vh', position: 'absolute', left: '0vh'}} />
                     <img src={lightGoldCoin} style={{height: '35vh', position: 'absolute', right: '0vh'}} />
 
-
-                    <div style={{position: 'absolute', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
+                   <div style={{position: 'absolute', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
                         <Button onClick={() => this.setScreen(this, screens.twofa)} label="SIGN UP"/>
                         <Button onClick={() => this.setScreen(this, screens.login)} label="LOG IN"/>
                     </div>
