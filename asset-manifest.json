@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/FastWallet-FrontEnd/static/css/main.d0a0b74b.chunk.css",
-    "main.js": "/FastWallet-FrontEnd/static/js/main.63d6cc61.chunk.js",
-    "main.js.map": "/FastWallet-FrontEnd/static/js/main.63d6cc61.chunk.js.map",
-    "runtime-main.js": "/FastWallet-FrontEnd/static/js/runtime-main.c7b65da6.js",
-    "runtime-main.js.map": "/FastWallet-FrontEnd/static/js/runtime-main.c7b65da6.js.map",
-    "static/js/2.9bb3b836.chunk.js": "/FastWallet-FrontEnd/static/js/2.9bb3b836.chunk.js",
-    "static/js/2.9bb3b836.chunk.js.map": "/FastWallet-FrontEnd/static/js/2.9bb3b836.chunk.js.map",
-    "static/js/3.6d72edd3.chunk.js": "/FastWallet-FrontEnd/static/js/3.6d72edd3.chunk.js",
-    "static/js/3.6d72edd3.chunk.js.map": "/FastWallet-FrontEnd/static/js/3.6d72edd3.chunk.js.map",
-    "index.html": "/FastWallet-FrontEnd/index.html",
-    "static/css/main.d0a0b74b.chunk.css.map": "/FastWallet-FrontEnd/static/css/main.d0a0b74b.chunk.css.map",
-    "static/js/2.9bb3b836.chunk.js.LICENSE.txt": "/FastWallet-FrontEnd/static/js/2.9bb3b836.chunk.js.LICENSE.txt",
-    "static/media/2GoldCoins.d3cc4e4f.png": "/FastWallet-FrontEnd/static/media/2GoldCoins.d3cc4e4f.png",
-    "static/media/2GoldCoins2.a0b136ba.png": "/FastWallet-FrontEnd/static/media/2GoldCoins2.a0b136ba.png",
-    "static/media/Fast-Wallet-Logo.56de9fec.png": "/FastWallet-FrontEnd/static/media/Fast-Wallet-Logo.56de9fec.png",
-    "static/media/GoldCoin.aa987bcc.png": "/FastWallet-FrontEnd/static/media/GoldCoin.aa987bcc.png",
-    "static/media/LightGoldCoin.e7824f80.png": "/FastWallet-FrontEnd/static/media/LightGoldCoin.e7824f80.png",
-    "static/media/App.css": "/FastWallet-FrontEnd/static/media/background.bde762bb.png"
+    "main.css": "/static/css/main.47acae1d.chunk.css",
+    "main.js": "/static/js/main.63d6cc61.chunk.js",
+    "main.js.map": "/static/js/main.63d6cc61.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7c6c3376.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7c6c3376.js.map",
+    "static/js/2.9bb3b836.chunk.js": "/static/js/2.9bb3b836.chunk.js",
+    "static/js/2.9bb3b836.chunk.js.map": "/static/js/2.9bb3b836.chunk.js.map",
+    "static/js/3.6d72edd3.chunk.js": "/static/js/3.6d72edd3.chunk.js",
+    "static/js/3.6d72edd3.chunk.js.map": "/static/js/3.6d72edd3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.47acae1d.chunk.css.map": "/static/css/main.47acae1d.chunk.css.map",
+    "static/js/2.9bb3b836.chunk.js.LICENSE.txt": "/static/js/2.9bb3b836.chunk.js.LICENSE.txt",
+    "static/media/2GoldCoins.d3cc4e4f.png": "/static/media/2GoldCoins.d3cc4e4f.png",
+    "static/media/2GoldCoins2.a0b136ba.png": "/static/media/2GoldCoins2.a0b136ba.png",
+    "static/media/Fast-Wallet-Logo.56de9fec.png": "/static/media/Fast-Wallet-Logo.56de9fec.png",
+    "static/media/GoldCoin.aa987bcc.png": "/static/media/GoldCoin.aa987bcc.png",
+    "static/media/LightGoldCoin.e7824f80.png": "/static/media/LightGoldCoin.e7824f80.png",
+    "static/media/App.css": "/static/media/background.bde762bb.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c7b65da6.js",
+    "static/js/runtime-main.7c6c3376.js",
     "static/js/2.9bb3b836.chunk.js",
-    "static/css/main.d0a0b74b.chunk.css",
+    "static/css/main.47acae1d.chunk.css",
     "static/js/main.63d6cc61.chunk.js"
   ]
 }
