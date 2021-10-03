@@ -20,13 +20,13 @@ export default class TransferCoins extends Component{
     }
 
     getCoinByName(name){
-        return coins.filter((coin) => coin.name==name)[0];
+        return coins.filter((coin) => coin.name===name)[0];
     }
 
     render(){
         return (
             <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-            {this.state.mode == "chooseType" &&
+            {this.state.mode === "chooseType" &&
                 <>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 <SmallButton label="Bitcoin"  onClick={() => this.setCoin(this, "Bitcoin")}/>
@@ -60,21 +60,21 @@ export default class TransferCoins extends Component{
 
                 </>}
 
-            {this.state.mode == "dealTicket" && 
+            {this.state.mode === "dealTicket" && 
                 <div>
                     <b>Transfer {this.state.coin.name} in!</b>
                     <div style={{height: '1vh'}}></div>
 
-                    <div>Amount {Math.round(this.state.value / this.state.coin.value * 100000) / 100000}</div>
-                    <div>Value: $<input type="text" onChange={val => this.setState({value: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setState({mode: "code"})}}></input></div>
+                    <div>Amount: {Math.round(this.state.value / this.state.coin.value * 100000) / 100000}</div>
+                    <div style={{display: 'flex', width: '80vh', justifyContent: 'center'}}><div>Value: $</div><input type="text" onChange={val => this.setState({value: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setState({mode: "code"})}}></input></div>
                     
-                    <div style={{display: 'flex', justifyContent: 'center'}}><BackButton label={"choose coin"} style={{marginTop: '1vh'}} onClick={() => this.setState({mode: "chooseType"})}/></div> 
+                    <div style={{display: 'flex', justifyContent: 'center'}}><BackButton label={"choose coin"} style={{marginTop: '1vh', width: '20vh'}} onClick={() => this.setState({mode: "chooseType"})}/></div> 
                 
                 </div>
             }
 
             {
-                this.state.mode == "code" && 
+                this.state.mode === "code" && 
                 <div>
                     <div>Copy the code below into your other wallet</div>
                     <div style={{height: '1vh'}}></div>
@@ -84,7 +84,7 @@ export default class TransferCoins extends Component{
                 </div>
             }
 
-            {this.state.mode == "success" && <div>{Math.round(this.state.value / this.state.coin.value * 100000) / 100000} units of {this.state.coin.name} successfully transferred! <SmallButton label="My Account" onClick={() => this.props.goToAccount(this.props.parent)}/></div>}
+            {this.state.mode === "success" && <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>{Math.round(this.state.value / this.state.coin.value * 100000) / 100000} units of {this.state.coin.name} successfully transferred! <SmallButton label="My Account" style={{width: '20vh', marginTop: '2vh'}} onClick={() => this.props.goToAccount(this.props.parent)}/></div>}
 
             </div>
         );

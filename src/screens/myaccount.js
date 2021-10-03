@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import coins from '../helper/coins';
+import '../App.css';
 
 export default class MyAccount extends Component{
 
@@ -19,12 +20,14 @@ export default class MyAccount extends Component{
 
     render(){
         return (
-            <div>
-                <div style={{cursor: 'pointer', fontWeight: this.state.mode == "coinsowned" ? "bold" : "normal"}} onClick={() => this.setMode("coinsowned")}>Coins owned</div>
+            <div style={{marginBottom: this.props.isMobile ? '5vh' : 0}}>
+                <div style={{display: 'flex', justifyContent: 'center'}}><div style={{cursor: 'pointer', fontWeight: this.state.mode === "coinsowned" ? "bold" : "normal"}} onClick={() => this.setMode("coinsowned")}>My Coins</div><div style={{marginRight: '1vh', marginLeft: '1vh'}}>|</div><div style={{cursor: 'pointer', fontWeight: this.state.mode === "transactions" ? "bold" : "normal"}} onClick={() => this.setMode("transactions")}>Transactions</div>
+                </div>
+                <div style={{height: '1vh'}}></div>
                 
-                {this.state.mode == "coinsowned" &&
-                <table>
-                    <tr><th>Coin</th><th>Amount</th><th>US$</th></tr>
+                {this.state.mode === "coinsowned" &&
+                <table style={{fontSize: '1.5vh'}}>
+                    <tr><th>Coin</th><th>Amount</th><th>USD</th></tr>
                     {coins.map((coin) => 
                         <tr><td>{coin.name}</td><td>{coin.amount}</td><td>${coin.amount*coin.value}</td></tr>
                     )}
@@ -32,24 +35,23 @@ export default class MyAccount extends Component{
                     }
 
 
-                <div style={{height: 20}}></div>
+                <div style={{height: 10}}></div>
 
 
 
-                <div style={{cursor: 'pointer', fontWeight: this.state.mode == "transactions" ? "bold" : "normal"}} onClick={() => this.setMode("transactions")}>Recent Transactions</div>
                 
-                {this.state.mode == "transactions" && (this.props.transactions.length == 0 
+                {this.state.mode === "transactions" && (this.props.transactions.length === 0 
                     ? 
                 <div>No recent transactions</div> 
                     : 
-                <table>
+                <table style={{fontSize: '1.5vh'}}>
                     <tr><th>Coin</th><th>Amount</th><th>Time</th></tr>
                     {this.props.transactions.map((transaction) => 
                         <tr><td>{transaction.coin}</td><td>{transaction.amount}</td><td>{transaction.time}</td></tr>
                     )}
                 </table>)
                 }
-               
+                
             </div>
         );
     }

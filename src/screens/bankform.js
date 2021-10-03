@@ -3,13 +3,13 @@ import Button from '../components/Button';
 
 export default class BankForm extends Component{
 
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render(){
         return (
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '2vh'}}>
                 <div style={{alignItems: 'flex-start', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <label>
                     Institution name

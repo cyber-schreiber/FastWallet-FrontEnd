@@ -33,7 +33,7 @@ export default class CreatePassword extends Component{
 
     update(){
         let over8 = this.state.p1.length >= 8;
-        let passwordsMatch = this.state.p1 == this.state.p2;
+        let passwordsMatch = this.state.p1 === this.state.p2;
         let digit = this.hasDigit(this.state.p1);
         let upper = this.hasUpper(this.state.p1);
         let lower = this.hasLower(this.state.p1);
@@ -44,25 +44,25 @@ export default class CreatePassword extends Component{
             digit: digit,
             upper: upper,
             lower: lower,
-            goodToGo: over8 && digit && passwordsMatch && upper && lower || this.state.p1 == "hack",
+            goodToGo: (over8 && digit && passwordsMatch && upper && lower) || this.state.p1 === "hack",
         })
     }
 
     render(){
         return (
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <img src={lightGoldCoin} style={{height: '45vh', position: 'fixed', bottom: '20vh'}} />
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: '1.8vh'}}>
+                <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'fixed', bottom: '20vh'}} />
                 <div style={{height: '40vh', position: 'fixed', bottom: '22vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>                
-                    <label  style={{marginBottom: '2vh', marginTop: '4vh'}}>
+                    <div>
                         Password:
-                        <input type="password" name="name" onChange={val => this.setState({p1: val.target.value}, this.update)}/>
-                    </label>
-                    <label style={{marginBottom: '2vh'}}>
+                    </div>
+                    <input type="password" name="name" onChange={val => this.setState({p1: val.target.value}, this.update)}/>
+                    <div>
                         Re-enter password:
-                        <input type="password" name="name" onChange={val => this.setState({p2: val.target.value}, this.update)}/>
-                    </label>
-                    <div style={{display: 'flex', alignItems: 'flex-start', flexDirection: 'column'}}>
-                    <div style={{fontWeight: this.state.passwordsMatch ? "normal" : "bold"}}>Match</div>
+                    </div>
+                    <input type="password" name="name" onChange={val => this.setState({p2: val.target.value}, this.update)}/>
+                    <div style={{display: 'flex', alignItems: 'flex-start', flexDirection: 'column', marginBottom: '1vh'}}>
+                    <div style={{fontWeight: this.state.passwordsMatch ? "normal" : "bold"}}>Passwords match</div>
                     <div style={{fontWeight: this.state.over8 ? "normal" : "bold"}}>At least 8 characters</div>
                     <div style={{fontWeight: this.state.digit ? "normal" : "bold"}}>Contain 1 digit</div>
                     <div style={{fontWeight: this.state.upper ? "normal" : "bold"}}>Contain 1 uppercase letter</div>

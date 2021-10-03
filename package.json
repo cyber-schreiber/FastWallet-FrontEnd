@@ -2,7 +2,7 @@
   "name": "fastwallet-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cyber-schreiber.github.io/FastWallet-FrontEnd/",
+  "homepage": "http://www.fastwallet.com",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@testing-library/jest-dom": "^5.14.1",

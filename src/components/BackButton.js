@@ -3,9 +3,9 @@ import { IoChevronBack } from "react-icons/io5";
 import SmallButton from './SmallButton';
 export default class BackButton extends Component{
 
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render(){
         return (

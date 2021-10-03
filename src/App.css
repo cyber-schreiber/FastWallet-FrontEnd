@@ -80,3 +80,14 @@
     transform: rotate(360deg);
   }
 } */
+
+td, th {
+  text-align: right;
+  padding: 0 7px;
+  border: 1px solid black;
+}
+
+table {
+  border: 1px solid black;
+
+}
