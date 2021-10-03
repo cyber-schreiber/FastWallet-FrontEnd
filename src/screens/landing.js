@@ -83,7 +83,7 @@ export default class Landing extends Component{
 
         let accStr = !!this.props.accountID ? " " + String(this.props.accountID) : "";
         accStr = "MY ACCOUNT" + accStr;
-        let longAccStr = this.props.accountID >= 100;
+        let longAccStr = this.props.accountID >= 10;
         if (!this.props.isMobile){
         return (
 
