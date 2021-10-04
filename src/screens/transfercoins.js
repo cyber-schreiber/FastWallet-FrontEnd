@@ -56,17 +56,23 @@ export default class TransferCoins extends Component{
                 </div>
 
                 <div style={{height: '1vh'}}></div>
-                <SmallButton label="Other" onClick={() => this.setCoin(this, "Other")}/>
+                <SmallButton label="Other" onClick={() => this.setCoin(this, "Bitcoin")}/>
 
                 </>}
 
             {this.state.mode === "dealTicket" && 
                 <div>
                     <b>Transfer {this.state.coin.name} in!</b>
-                    <div style={{height: '1vh'}}></div>
+                    <div style={{height: '3vh'}}></div>
 
                     <div>Amount: {Math.round(this.state.value / this.state.coin.value * 100000) / 100000}</div>
-                    <div style={{display: 'flex', width: '80vh', justifyContent: 'center'}}><div>Value: $</div><input type="text" onChange={val => this.setState({value: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setState({mode: "code"})}}></input></div>
+                    <div style={{height: '1vh'}}></div>
+                    <div style={{display: 'flex', width: '80vh', justifyContent: 'center'}}>
+                        <input className="input" placeholder="USD Value" onChange={val => this.setState({value: val.target.value})}/>
+                        <div style={{width: '1vh'}}/>
+                        <SmallButton label="Submit" onClick={() => {this.setState({mode: "code"})}}/>
+                    </div>
+                    <div style={{height: '1vh'}}></div>
                     
                     <div style={{display: 'flex', justifyContent: 'center'}}><BackButton label={"choose coin"} style={{marginTop: '1vh', width: '20vh'}} onClick={() => this.setState({mode: "chooseType"})}/></div> 
                 

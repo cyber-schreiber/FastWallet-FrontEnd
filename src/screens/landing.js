@@ -4,6 +4,9 @@ import Trade from './trade.js';
 import MyAccount from './myaccount';
 import lightGoldCoin from '../LightGoldCoin.png';
 import Button from '../components/Button';
+import ClickableCoin from '../components/ClickableCoin';
+import History from './history';
+import {IoHome, IoAddCircleOutline, IoLogoUsd, IoAnalytics, IoList} from 'react-icons/io5';
 
 export default class Landing extends Component{
 
@@ -56,6 +59,12 @@ export default class Landing extends Component{
         })
     }
 
+    history(_this){
+        _this.setState({
+            mode: "history",
+        })
+    }
+
     buyCoin(_this, coin, amount){
         if (!!_this.state.balances[coin]){
             let balances = _this.state.balances;
@@ -84,55 +93,64 @@ export default class Landing extends Component{
         let accStr = !!this.props.accountID ? " " + String(this.props.accountID) : "";
         accStr = "MY ACCOUNT" + accStr;
         let longAccStr = this.props.accountID >= 10;
+
+
         if (!this.props.isMobile){
         return (
 
-            <div style={{height: '45vh', width: '88vh', position: 'fixed', bottom: '20vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'absolute', left: '0vh'}} />
-                    <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'absolute', right: '0vh'}} />
+            <div style={{height: '65vh', width: '70vw', position: 'fixed', bottom: '2vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <img alt="" src={lightGoldCoin} style={{height: '52vh', position: 'absolute', }} />
+
+                    <div style={{height: '52vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', bottom: '6vh', width: '52vh', }}>
 
 
-                    <div style={{position: 'absolute', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
-                        <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30vh'}}>
-                            <Button label={accStr} style={{width: longAccStr ? '30vh' : '25vh', backgroundColor: this.state.mode === "myAccount" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.myAccount(this)}/>
-                            <div style={{height: '2vh'}}></div>
-                            <Button label="ADD FUNDS" style={{width: '25vh', backgroundColor: this.state.mode === "addFunds" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.addFunds(this)}/>
-                            <div style={{height: '2vh'}}></div>
-                            <Button label="TRADE" style={{backgroundColor: this.state.mode === "trade" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.trade(this)}/>
-                        </div>                        
-                    
-                    
-                        <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30vh'}}>
-                            {this.state.mode === "addFunds" && <AddFunds isMobile={this.props.isMobile} goToAccount={this.myAccount} addBalance={this.addBalance} goToTradeScreen={this.trade} parent={this}/>}
-                            {this.state.mode === "trade" && <Trade isMobile={this.props.isMobile} goToAccount={this.myAccount} parent={this} buyCoin={this.buyCoin}/>}
-                            {this.state.mode === "myAccount" && <MyAccount isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
-                        </div>                    
+                    {this.state.mode === "addFunds" && <AddFunds isMobile={this.props.isMobile} goToAccount={this.myAccount} addBalance={this.addBalance} goToTradeScreen={this.trade} parent={this}/>}
+                    {this.state.mode === "trade" && <Trade isMobile={this.props.isMobile} goToAccount={this.myAccount} parent={this} buyCoin={this.buyCoin}/>}
+
+                    {this.state.mode === "myAccount" && <MyAccount isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
+                    {this.state.mode === "history" && <History isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
+
                     </div>
-            </div>
+
+
+                        <ClickableCoin style={{position: 'absolute', bottom: '0vh', left: '40vh'}} onClick={() => this.myAccount(this)} size='15vh' content={<IoHome size={40}/>}/>
+                        <ClickableCoin style={{position: 'absolute', top: '0vh', right: '40vh'}} onClick={() => this.history(this)} size='15vh' content={<IoList size={40}/>}/>
+                        <ClickableCoin style={{position: 'absolute', top: '0vh', left: '40vh'}} onClick={() => this.addFunds(this)} size='15vh' content={<div style={{display: 'flex'}}><IoAddCircleOutline size={35}/><IoLogoUsd size={35}/></div>}/>
+                        <ClickableCoin style={{position: 'absolute', bottom: '0vh', right: '40vh'}} onClick={() => this.trade(this)} size='15vh' content={<IoAnalytics size={40}/>}/>
+                    
+
+                        
+ 
+
+                </div>
 
         );}
         else {
             return (
 
-                <div style={{height: '45vh', width: '88vh', position: 'fixed', bottom: '0vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <img alt="" src={lightGoldCoin} style={{height: '32vh', position: 'absolute', bottom: '42vh'}} />
-                        <img alt="" src={lightGoldCoin} style={{height: '52vh', position: 'absolute', bottom: '0vh'}} />
-    
-    
-                            <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30vh', bottom: '52vh', position: 'absolute'}}>
-                                <Button label={accStr} style={{fontSize: 15, height: '3vh', width: longAccStr ? '25vh' : '20vh', backgroundColor: this.state.mode === "myAccount" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.myAccount(this)}/>
-                                <div style={{height: '1vh'}}></div>
-                                <Button label="ADD FUNDS" style={{fontSize: 15, height: '3vh', width: '20vh', backgroundColor: this.state.mode === "addFunds" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.addFunds(this)}/>
-                                <div style={{height: '1vh'}}></div>
-                                <Button label="TRADE" style={{fontSize: 15, height: '3vh', width: '20vh', backgroundColor: this.state.mode === "trade" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}} onClick={() => this.trade(this)}/>
-                            </div>                        
+                <div style={{height: '65vh', width: '70vw', position: 'fixed', bottom: '2vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+
+                    <div style={{height: '52vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', bottom: '6vh', width: '52vh'}}>
+                        <img alt="" src={lightGoldCoin} style={{height: '52vh', position: 'absolute', }} />
+                    </div>
+                    <div style={{height: '52vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', bottom: '6vh', width: '52vh', }}>
+
+                        {this.state.mode === "addFunds" && <AddFunds isMobile={this.props.isMobile} goToAccount={this.myAccount} addBalance={this.addBalance} goToTradeScreen={this.trade} parent={this}/>}
+                        {this.state.mode === "trade" && <Trade isMobile={this.props.isMobile} goToAccount={this.myAccount} parent={this} buyCoin={this.buyCoin}/>}
+
+                        {this.state.mode === "myAccount" && <MyAccount isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
+                        {this.state.mode === "history" && <History isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
+                    </div>
+
                         
-                        
-                            <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30vh', position: 'absolute'}}>
-                                {this.state.mode === "addFunds" && <AddFunds isMobile={this.props.isMobile} goToAccount={this.myAccount} addBalance={this.addBalance} goToTradeScreen={this.trade} parent={this}/>}
-                                {this.state.mode === "trade" && <Trade isMobile={this.props.isMobile} goToAccount={this.myAccount} parent={this} buyCoin={this.buyCoin}/>}
-                                {this.state.mode === "myAccount" && <MyAccount isMobile={this.props.isMobile} balances={this.state.balances} transactions={this.state.transactions} parent={this}/>}
-                            </div>                    
+                        <ClickableCoin style={{position: 'absolute', bottom: '0vh', left: '0vh'}} onClick={() => this.myAccount(this)} size='15vh' content={<IoHome size={40}/>}/>
+                        <ClickableCoin style={{position: 'absolute', top: '0vh', right: '0vh'}} onClick={() => this.history(this)} size='15vh' content={<IoList size={40}/>}/>
+                        <ClickableCoin style={{position: 'absolute', top: '0vh', left: '0vh'}} onClick={() => this.addFunds(this)} size='15vh' content={<div style={{display: 'flex'}}><IoAddCircleOutline size={35}/><IoLogoUsd size={35}/></div>}/>
+                        <ClickableCoin style={{position: 'absolute', bottom: '0vh', right: '0vh'}} onClick={() => this.trade(this)} size='15vh' content={<IoAnalytics size={40}/>}/>
+                    
+
+
                 </div>
     
             );

@@ -29,14 +29,24 @@ class Trade extends Component{
             return (
                 <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 {this.state.mode === "chooseType" &&
-    
-                    <table style={{fontSize: '2vh', marginBottom: this.props.isMobile ? '5vh' : 0}}>
+
+
+
+                    <div >
+                        <div style={{display: 'flex', justifyContent: 'center', fontSize: '2.2vh'}}><b>Trade Coins</b>
+                        </div>
+                        <div style={{height: '1vh'}}></div>
+                        
+                        <table style={{fontSize: '1.8vh'}}>
                         <tr><th>Coin</th><th>USD</th><th>Change</th></tr>
-                        {coins.map((coin) => 
-                            <tr ><td style={{cursor: 'pointer'}} onClick={() => this.setCoin(this, coin)}><b>{coin.name}</b></td><td>${coin.value}</td><td>+0.01%</td></tr>
-                        )}
-                    </table>
-                    
+                            {coins.map((coin) => 
+                                <tr ><td style={{cursor: 'pointer'}} onClick={() => this.setCoin(this, coin)}><b>{coin.name}</b></td><td>${coin.value}</td><td>+0.01%</td></tr>
+                            )}
+                        </table>
+                        
+                    </div>
+
+
                 }
     
                 {this.state.mode === "dealTicket" && 
@@ -48,9 +58,16 @@ class Trade extends Component{
                     <SmallButton label="SELL" onClick={() => this.setBuyOrSell("sell")} style={{backgroundColor: this.state.bos === "sell" ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0)"}}/>
                     
                     </div>
+                    <div style={{height: '2vh'}}></div>
+
                     <div>Amount: {Math.round(this.state.value / this.state.coin.value * 100000) / 100000}</div>
-                    <div style={{display: 'flex', justifyContent: 'center', width: '50vh', marginBottom: '2vh'}}>Value: $<input type="text" onChange={val => this.setState({value: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setState({mode: "success"}); this.props.buyCoin(this.props.parent, this.state.coin.name, Math.round(this.state.value / this.state.coin.value * 100000) / 100000)}}></input></div>
-                        
+                    <div style={{height: '1vh'}}></div>
+                    <div style={{display: 'flex', width: '80vh', justifyContent: 'center'}}>
+                        <input className="input" placeholder="USD Value" onChange={val => this.setState({value: val.target.value})}/>
+                        <div style={{width: '1vh'}}/>
+                        <SmallButton label="Submit" onClick={() => {this.setState({mode: "success"})}}/>
+                    </div>
+                    <div style={{height: '1vh'}}></div>
     
     
                     </div>

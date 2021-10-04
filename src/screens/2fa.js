@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import lightGoldCoin from '../LightGoldCoin.png';
 import SmallButton from '../components/SmallButton';
 import BackButton from '../components/BackButton';
+import ClickableCoin from '../components/ClickableCoin';
 
 const modes = {
     phoneOrEmail: "phoneOrEmail",
@@ -15,7 +16,7 @@ class TwoFA extends Component{
         super(props);
 
         this.state = {
-            mode: modes.phoneOrEmail,
+            mode: !!this.props.phoneOrEmail ? this.props.phoneOrEmail : modes.phoneOrEmail,
             codeSent: false,
             enteredCode: "",
         }
@@ -23,79 +24,100 @@ class TwoFA extends Component{
 
     setPhone(_this){
         _this.setState({mode: modes.phone});
-        _this.props.setPhoneOrEmail(modes.phone);
     }
 
     setEmail(_this){
         _this.setState({mode: modes.email});
-        _this.props.setPhoneOrEmail(modes.email);
     }
 
     render(){
         return (
-                <div style={{height: '40vh', width: '67vh', position: 'fixed', bottom: '20vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <img alt="" src={lightGoldCoin} style={{height: '35vh', position: 'absolute', }} />
-                    {this.state.mode === modes.phoneOrEmail && !this.props.isMobile && <img alt="" src={lightGoldCoin} style={{height: '25vh', position: 'absolute', left: '0vh', top: '10vh'}} />}
-                    {this.state.mode === modes.phoneOrEmail && !this.props.isMobile && <img alt="" src={lightGoldCoin} style={{height: '25vh', position: 'absolute', right: '0vh', top: '10vh'}} />}
-
+                <div style={{height: '40vh', width: '100%', position: 'fixed', bottom: '20vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
 
                     <div style={{position: 'absolute', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
                         {this.state.mode === modes.phoneOrEmail && !this.props.isMobile &&
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <SmallButton label="phone" style={{marginRight: '10vh', marginTop: '4vh'}} onClick={() => this.setPhone(this)}/>
-                                <div style={{fontSize: '5vh'}}><b>2-FA</b></div>
-                                <SmallButton label="email" style={{marginLeft: '10vh', marginTop: '4vh'}}  onClick={() => this.setEmail(this)}/>
+                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
+                                
+                                <div style={{color: 'yellow', fontSize: '3vh', display: 'flex', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.2)', padding: '2vh', borderRadius: '4vh'}}>CHOOSE  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>PHONE</b></div>  OR  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>EMAIL</b></div>  FOR VERIFICATION CODE</div>
+
+                                <div style={{height: '5vh'}}/>
+
+                                <div style={{display: 'flex', width: '50%', justifyContent: 'space-between'}}>
+
+                                <ClickableCoin size='30vh' onClick={() => this.setPhone(this)} content={<div>PHONE</div>}/>
+                                <ClickableCoin size='30vh' onClick={() => this.setEmail(this)} content={<div>EMAIL</div>}/>
                                 {/* <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <BackButton style={{marginTop: '2vh'}} onClick={this.props.goBack}/>
                                 </div> */}
 
+                                </div>
                             </div>
                         }
                         {this.state.mode === modes.phoneOrEmail && this.props.isMobile &&
-                            <div >
-                                <div style={{fontSize: '5vh'}}><b>2-FA</b></div>
+                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
+                                
+                            <div style={{color: 'yellow', fontSize: '3vh', display: 'flex', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.2)', padding: '2vh', borderRadius: '4vh', display: 'flex', flexDirection: 'column'}}>
+                                <div style={{display: 'flex'}}>CHOOSE  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>PHONE</b></div>  OR  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>EMAIL</b></div></div>  FOR VERIFICATION CODE</div>
 
-                                <SmallButton label="phone" style={{marginTop: '1vh'}} onClick={() => this.setPhone(this)}/>
-                                <SmallButton label="email" style={{marginTop: '1vh'}}  onClick={() => this.setEmail(this)}/>
-                                {/* <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <BackButton style={{marginTop: '2vh'}} onClick={this.props.goBack}/>
-                                </div> */}
+                            <div style={{height: '5vh'}}/>
+
+                            <div style={{display: 'flex', width: '50%', justifyContent: 'space-between'}}>
+
+                            <ClickableCoin size='20vh' onClick={() => this.setPhone(this)} content={<div>PHONE</div>}/>
+                            <ClickableCoin size='20vh' onClick={() => this.setEmail(this)} content={<div>EMAIL</div>}/>
+                            {/* <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <BackButton style={{marginTop: '2vh'}} onClick={this.props.goBack}/>
+                            </div> */}
 
                             </div>
+                        </div>
                         }
 
                         {this.state.mode === modes.phone && !this.state.codeSent && <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            <div>
-                                Phone number:
-                            </div>
-                            <input type="text" name="phoneNumber" />
+
+                            <img alt="" src={lightGoldCoin} style={{height: '35vh', position: 'absolute', top: '-15vh'}} />
+                            <div style={{height: '35vh', position: 'absolute', top: '-15vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                            <input className="input" placeholder="Phone number"/>
 
                             <div style={{height: '1vh'}}/>
                             <SmallButton label="send code" style={{width: '14vh'}} onClick={() => this.setState({codeSent: true})}/>
 
                             <BackButton style={{marginTop: '2vh'}} onClick={() => this.setState({mode: modes.phoneOrEmail})}/>
-
+                            </div>
                         </div>}
 
                         {this.state.mode === modes.email && !this.state.codeSent && <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            <div>
-                                Email:
-                            </div>
-                            <input type="text" name="email" />
+
+                            <img alt="" src={lightGoldCoin} style={{height: '35vh', position: 'absolute', top: '-15vh'}} />
+                            <div style={{height: '35vh', position: 'absolute', top: '-15vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                            <input className="input" placeholder="Email address"/>
+
                             <div style={{height: '1vh'}}/>
                             <SmallButton label="send code" style={{width: '14vh'}} onClick={() => this.setState({codeSent: true})}/>
+
                             <BackButton style={{marginTop: '2vh'}} onClick={() => this.setState({mode: modes.phoneOrEmail})}/>
-
+                            </div>
                         </div>}
 
-                        {this.state.codeSent && <div style={{marginTop: '1vh', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                            <div>
-                            Enter code:
+                        {this.state.codeSent && 
+                        
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+
+                            <img alt="" src={lightGoldCoin} style={{height: '35vh', position: 'absolute', top: '-15vh'}} />
+                            <div style={{height: '35vh', position: 'absolute', top: '-15vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                            <input className="input" placeholder="Enter code" onChange={val => this.setState({enteredCode: val.target.value})}/>
+
+                            <div style={{height: '1vh'}}/>
+
+                            <SmallButton label="submit" onClick={this.props.nextScreen}/>
+                            <BackButton style={{marginTop: '2vh'}} onClick={() => this.setState({codeSent: false, mode: modes.phoneOrEmail})}/>
+
+                            </div>
                         </div>
-                        <input type="text" name="code" onChange={val => this.setState({enteredCode: val.target.value})}/>
-                        <div style={{height: '1vh'}}/>
-                        <SmallButton label="submit" onClick={this.props.nextScreen}/>
-                        </div>}
+                        
+                        
+                        
+                        }
 
                     </div>
                     

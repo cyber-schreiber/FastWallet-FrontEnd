@@ -50,17 +50,15 @@ export default class CreatePassword extends Component{
 
     render(){
         return (
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: '1.8vh'}}>
-                <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'fixed', bottom: '20vh'}} />
-                <div style={{height: '40vh', position: 'fixed', bottom: '22vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>                
-                    <div>
-                        Password:
-                    </div>
-                    <input type="password" name="name" onChange={val => this.setState({p1: val.target.value}, this.update)}/>
-                    <div>
-                        Re-enter password:
-                    </div>
-                    <input type="password" name="name" onChange={val => this.setState({p2: val.target.value}, this.update)}/>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed', height: '55vh', bottom: '12vh'}}>
+                <div style={{color: 'yellow', fontSize: '3vh', position: 'absolute', top: '0vh', width: '40vh', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.2)', padding: '2vh', borderRadius: '4vh'}}>PLEASE CREATE YOUR <b>PASSWORD</b></div>
+
+                <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'fixed', bottom: '8vh'}} />
+                <div style={{height: '40vh', position: 'fixed', bottom: '8vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>                
+                    <input type="password" className="input" placeholder="Enter password" onChange={val => this.setState({p1: val.target.value}, this.update)}/>
+                    <div style={{height: '1vh'}}/>
+                    <input type="password" className="input" placeholder="Re-enter password" onChange={val => this.setState({p2: val.target.value}, this.update)}/>
+                    <div style={{height: '1vh'}}/>
                     <div style={{display: 'flex', alignItems: 'flex-start', flexDirection: 'column', marginBottom: '1vh'}}>
                     <div style={{fontWeight: this.state.passwordsMatch ? "normal" : "bold"}}>Passwords match</div>
                     <div style={{fontWeight: this.state.over8 ? "normal" : "bold"}}>At least 8 characters</div>

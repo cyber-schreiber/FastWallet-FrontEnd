@@ -58,15 +58,15 @@ class AddFunds extends Component{
                     this.state.mode === "wire" && 
                     <BankForm submit={() => this.setMode(this, "wireSubmitted")}/>
                 }
-                {this.state.mode === "achSubmitted" && <div style={{width: '40vh'}}>ACH transfer completed successfully!</div>}
-                {this.state.mode === "wireSubmitted" && <div>Wire transfer completed successfully!</div>}
+                {this.state.mode === "achSubmitted" && <div style={{width: '30vh'}}>ACH transfer completed successfully!</div>}
+                {this.state.mode === "wireSubmitted" && <div  style={{width: '30vh'}}>Wire transfer completed successfully!</div>}
                 {this.state.mode !== "chooseType" && <BackButton style={{marginTop: '1vh'}} onClick={() => this.setMode(this, "chooseType")}/>}
             </div>
 
         );}
         else {
             return (
-                <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: '5vh'}}>
+                <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                     {this.state.mode === "chooseType" && 
                     <>
                     <Button label="ADD CASH"  style={{width: '25vh'}} onClick={() => this.setMode(this, "addCash")}/>

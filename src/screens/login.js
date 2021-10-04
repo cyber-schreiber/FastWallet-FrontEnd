@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import lightGoldCoin from '../LightGoldCoin.png';
 import Button from '../components/Button';
+import ClickableCoin from '../components/ClickableCoin';
 // import BackButton from '../components/BackButton';
 
 export default class Login extends Component{
@@ -12,19 +13,13 @@ export default class Login extends Component{
     render(){
         return (
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <img alt="" src={lightGoldCoin} style={{height: '45vh', position: 'fixed', bottom: '20vh'}} />
-                <div style={{height: '40vh', position: 'fixed', bottom: '22vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>                
-                    <label  style={{marginBottom: '2vh', marginTop: '4vh'}}>
-                        Username:
-                        <input type="text" name="name" />
-                    </label>
-                    <label style={{marginBottom: '2vh'}}>
-                        Password:
-                        <input type="password" name="name" />
-                    </label>
-                    <Button label="LOG IN" onClick={this.props.nextScreen}/>
+                <img alt="" src={lightGoldCoin} style={{height: '35vh', position: 'fixed', bottom: '20vh'}} />
+                <div style={{height: '35vh', position: 'fixed', bottom: '20vh', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>                
+                    <input className="input" placeholder="Username"/>
+                    <div style={{height: '2vh'}}></div>
+                    <input type="password" className="input" placeholder="Password"/>
                 </div>
-
+                <ClickableCoin style={{position: 'absolute', bottom: '10vh'}} onClick={this.props.nextScreen} size='20vh' content={<div style={{fontSize: '3vh'}}><b>LOG IN</b></div>}/>
             </div>
 
         );

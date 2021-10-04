@@ -43,7 +43,7 @@ export default class AddCash extends Component{
 
                 {this.state.mode === "chooseAmount" && <>
                 <Tooltip title={<div>Go to cash register at store, present them with your card, insert card into card machine at checkout, key in your PIN</div>}><b>How to deposit?</b></Tooltip>
-                <div style={{height: '2vh'}}></div>
+                <div style={{height: '4vh'}}></div>
 
                 <div style={{display: 'flex', }}>
                 <SmallButton label="Loose Change" onClick={() => {this.setMode("waiting"); this.setAmount("0.5"); this.props.addBalance(this.props.parent, 0.5)}} />
@@ -63,13 +63,15 @@ export default class AddCash extends Component{
 
                 <div style={{height: '1vh'}}></div>
 
-                <div>Other amount: <input type="text" onChange={val => this.setState({customAmount: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setMode("waiting"); this.setAmount(this.state.customAmount); this.props.addBalance(this.props.parent, this.state.customAmount)}}></input></div></>}
-                <div style={{height: '1vh'}}></div>
+                <div style={{display: 'flex'}}>
+                <input className="input" style={{marginTop: '0.5vh'}} placeholder="Other amount" onChange={val => this.setState({customAmount: val.target.value})}/><div style={{width: '1vh'}}></div><SmallButton style={{marginTop: '0.3vh'}} label="Submit" onClick={() => {this.setMode("waiting"); this.setAmount(this.state.customAmount); this.props.addBalance(this.props.parent, this.state.customAmount)}}/>
+                </div></>}
+                <div style={{height: '2vh'}}></div>
 
                 {this.state.mode === "waiting" && <div>Waiting for verification of your deposit...</div>}
 
                 {this.state.mode === "success" && <>
-                <div>${this.state.amount} successfully added to your account. <SmallButton style={{width: '20vh'}} label="Buy coins now!" onClick={() => this.props.goToTradeScreen(this.props.parent)}/></div>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '40vh'}}>${this.state.amount} successfully added to your account. <SmallButton style={{width: '20vh', marginTop: '1vh'}} label="Buy coins now!" onClick={() => this.props.goToTradeScreen(this.props.parent)}/></div>
                 </>}
                 
             </div>
@@ -81,7 +83,7 @@ export default class AddCash extends Component{
 
                 {this.state.mode === "chooseAmount" && !this.state.howToDeposit && <>
                 <div onClick={() => this.setState({howToDeposit: true})}><b>How to deposit?</b></div>
-                <div style={{height: '2vh'}}></div>
+                <div style={{height: '4vh'}}></div>
 
                 <div style={{display: 'flex', }}>
                 <SmallButton label="Loose Change" onClick={() => {this.setMode("waiting"); this.setAmount("0.5"); this.props.addBalance(this.props.parent, 0.5)}} />
@@ -101,17 +103,25 @@ export default class AddCash extends Component{
 
                 <div style={{height: '1vh'}}></div>
 
-                <div>Other amount: <input type="text" onChange={val => this.setState({customAmount: val.target.value})}></input><input type="submit" value="Submit" onClick={() => {this.setMode("waiting"); this.setAmount(this.state.customAmount); this.props.addBalance(this.props.parent, this.state.customAmount)}}></input></div></>}
+                <div style={{display: 'flex'}}>
+                <input className="input" style={{marginTop: '0.5vh'}} placeholder="Other amount" onChange={val => this.setState({customAmount: val.target.value})}/><SmallButton label="Submit" onClick={() => {this.setMode("waiting"); this.setAmount(this.state.customAmount); this.props.addBalance(this.props.parent, this.state.customAmount)}}/>
+                </div>
+                </>}
                 
-                {this.state.mode === "chooseAmount" && this.state.howToDeposit && <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>Go to cash register at store, present them with your card, insert card into card machine at checkout, key in your PIN <SmallButton  style={{marginTop: '2vh'}} onClick={() => this.setState({howToDeposit: false})} label="Got it!"/></div>}
+                {this.state.mode === "chooseAmount" && this.state.howToDeposit && <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '30vh'}}>Go to cash register at store, present them with your card, insert card into card machine at checkout, key in your PIN <SmallButton  style={{marginTop: '2vh'}} onClick={() => this.setState({howToDeposit: false})} label="Got it!"/></div>}
                 
-                <div style={{height: '1vh'}}></div>
 
-                {this.state.mode === "waiting" && <div>Waiting for verification of your deposit...</div>}
+                {this.state.mode === "waiting" && <div style={{width: '30vh'}}>Waiting for verification of your deposit...</div>}
 
                 {this.state.mode === "success" && <>
-                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>${this.state.amount} successfully added to your account. <SmallButton style={{width: '20vh', marginTop: '2vh'}} label="Buy coins now!" onClick={() => this.props.goToTradeScreen(this.props.parent)}/></div>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '30vh'}}>${this.state.amount} successfully added to your account! <SmallButton style={{width: '20vh', marginTop: '2vh'}} label="Buy coins now!" onClick={() => this.props.goToTradeScreen(this.props.parent)}/></div>
+
+
+
                 </>}
+
+                <div style={{height: '3vh'}}></div>
+
                 
             </div>
 
