@@ -1,12 +1,15 @@
 .App {
   text-align: center;
-  background-color: #000000;
+  background-image: url('bg.png');
+  /* filter: blur(6px); */
 }
 
 .App-logo {
   height: 10v;
   pointer-events: none;
   margin-top: -10vh;
+  filter: blur(0px);
+
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -16,7 +19,7 @@
 } */
 
 .App-header {
-  /* background-color: #282c34; */
+  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +27,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
   background-size: 100vw 100vh;
-  background-image: url('background.png');
-  /* filter: blur(6px);
-  -webkit-filter: blur(8px); */
+  background-image: url('bg2.png');
+  /* filter: blur(2px); */
+  /* -webkit-filter: blur(8px);  */
   width: 100vw;
 }
 
@@ -109,7 +112,8 @@ table {
 
 .input {
   border-radius: 1vh;
-  background-color: rgba(0, 0, 0, 0.07);
+  border-width: 0.3vh;
+  background-color: rgba(255, 255, 255, 0.4);
   color: rgba(0, 0, 0);
   height: 3vh;  
   padding: 0.5vh;
@@ -119,11 +123,32 @@ table {
 }
 
 .input:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
   opacity: 1; /* Firefox */
+}
+
+
+
+.blurb{
+  color: yellow;
+  font-size: 3vh; 
+  display: flex;
+  border-style: solid; 
+  border-color: rgba(255,255,255,0.2); 
+  padding: 2vh; 
+  border-radius: 4vh;
+}
+
+.tradecoinsbg{
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.tradecoinsbg:hover{
+  background-color: rgba(0, 0, 0, 0.2);
 }

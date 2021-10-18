@@ -3,6 +3,7 @@ import lightGoldCoin from '../LightGoldCoin.png';
 import SmallButton from '../components/SmallButton';
 import BackButton from '../components/BackButton';
 import ClickableCoin from '../components/ClickableCoin';
+import {IoCallOutline, IoMailOutline} from 'react-icons/io5';
 
 const modes = {
     phoneOrEmail: "phoneOrEmail",
@@ -38,14 +39,14 @@ class TwoFA extends Component{
                         {this.state.mode === modes.phoneOrEmail && !this.props.isMobile &&
                             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
                                 
-                                <div style={{color: 'yellow', fontSize: '3vh', display: 'flex', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.2)', padding: '2vh', borderRadius: '4vh'}}>CHOOSE  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>PHONE</b></div>  OR  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>EMAIL</b></div>  FOR VERIFICATION CODE</div>
+                                <div className="blurb" >CHOOSE  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>PHONE</b></div>  OR  <div style={{marginLeft: '1vh', marginRight: '1vh'}}><b>EMAIL</b></div>  FOR VERIFICATION CODE</div>
 
                                 <div style={{height: '5vh'}}/>
 
                                 <div style={{display: 'flex', width: '50%', justifyContent: 'space-between'}}>
 
-                                <ClickableCoin size='30vh' onClick={() => this.setPhone(this)} content={<div>PHONE</div>}/>
-                                <ClickableCoin size='30vh' onClick={() => this.setEmail(this)} content={<div>EMAIL</div>}/>
+                                <ClickableCoin size='30vh' onClick={() => this.setPhone(this)} content={<IoCallOutline size={70}/>}/>
+                                <ClickableCoin size='30vh' onClick={() => this.setEmail(this)} content={<IoMailOutline size={70}/>}/>
                                 {/* <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <BackButton style={{marginTop: '2vh'}} onClick={this.props.goBack}/>
                                 </div> */}
@@ -63,8 +64,8 @@ class TwoFA extends Component{
 
                             <div style={{display: 'flex', width: '50%', justifyContent: 'space-between'}}>
 
-                            <ClickableCoin size='20vh' onClick={() => this.setPhone(this)} content={<div>PHONE</div>}/>
-                            <ClickableCoin size='20vh' onClick={() => this.setEmail(this)} content={<div>EMAIL</div>}/>
+                            <ClickableCoin size='20vh' onClick={() => this.setPhone(this)} content={<IoCallOutline size={40}/>}/>
+                            <ClickableCoin size='20vh' onClick={() => this.setEmail(this)} content={<IoMailOutline size={40}/>}/>
                             {/* <div style={{display: 'flex', justifyContent: 'center'}}>
                             <BackButton style={{marginTop: '2vh'}} onClick={this.props.goBack}/>
                             </div> */}

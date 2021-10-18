@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import lightGoldCoin from '../LightGoldCoin.png';
 import Button from '../components/Button';
 import ClickableCoin from '../components/ClickableCoin';
+import {IoCallOutline, IoMailOutline} from 'react-icons/io5';
 
 class SignUpForm extends Component{
 
@@ -47,9 +48,9 @@ class SignUpForm extends Component{
                 </div>
 
                 <div style={{position: 'absolute', left: this.props.isMobile ? '5vh' : '0vh'}}>
-                <ClickableCoin onClick={() => {this.props.setPhoneOrEmail("phone"); this.props.nextScreen();}} size='20vh' content={<div>verify by phone</div>}/></div>
+                <ClickableCoin onClick={() => {this.props.setPhoneOrEmail("phone"); this.props.nextScreen();}} size='20vh' content={<IoCallOutline size={this.props.isMobile ? 30 : 60}/>}/></div>
                 <div style={{position: 'absolute', right: this.props.isMobile ? '5vh' : '0vh'}}>
-                <ClickableCoin onClick={() => {this.props.setPhoneOrEmail("email"); this.props.nextScreen();}} size='20vh' content={<div>verify by email</div>}/></div>
+                <ClickableCoin onClick={() => {this.props.setPhoneOrEmail("email"); this.props.nextScreen();}} size='20vh' content={<IoMailOutline size={this.props.isMobile ? 30 : 60}/>}/></div>
 
             </div>
 

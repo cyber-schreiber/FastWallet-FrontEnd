@@ -15,6 +15,32 @@ class Trade extends Component{
         }
     }
 
+    componentDidMount(){
+        let newChanges = this.getNewChanges();
+        this.setState({
+            changes: newChanges,
+        })
+        setInterval(() => {
+            let newChanges = this.getNewChanges();
+            this.setState({
+                changes: newChanges,
+            })
+        }, 4000);
+    }
+
+    getNewChanges(){
+        let changes = {};
+
+        for (let [key, value] of Object.entries(coins)){
+
+            let upOrDown = Math.random() > 0.5 ? -1 : 1;
+            let newVal = Math.round(Math.random()*Math.random()*5 * 100) / 100;
+
+            changes[value.name] = newVal*upOrDown;
+        }
+
+        return changes;
+    }
 
     setCoin(_this, coin){
         _this.setState({coin: coin, mode: "dealTicket"});
@@ -37,12 +63,12 @@ class Trade extends Component{
                         </div>
                         <div style={{height: '1vh'}}></div>
                         
-                        <table style={{fontSize: '1.8vh'}}>
-                        <tr><th>Coin</th><th>USD</th><th>Change</th></tr>
+                        {!!this.state.changes && <table style={{fontSize: '1.8vh', width: '35vh'}}>
+                        <tr ><th  style={{width: '10vh'}}>Coin</th><th  style={{width: '15vh'}}>USD</th><th  style={{width: '10vh'}}>Change</th></tr>
                             {coins.map((coin) => 
-                                <tr ><td style={{cursor: 'pointer'}} onClick={() => this.setCoin(this, coin)}><b>{coin.name}</b></td><td>${coin.value}</td><td>+0.01%</td></tr>
+                                <tr className="tradecoinsbg"  onClick={() => this.setCoin(this, coin)}><td style={{width: '10vh'}}><b>{coin.name}</b></td><td style={{width: '15vh'}}>${Math.round(coin.value*(1+(this.state.changes[coin.name]/100)) * 100) / 100}</td><td style={{width: '10vh'}}>{this.state.changes[coin.name]>0 && "+"}{this.state.changes[coin.name]}%</td></tr>
                             )}
-                        </table>
+                        </table>}
                         
                     </div>
 
